@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "5cf1390ef8b00f03a1cdc008",
+        "description": "Accesorios para animales",
+        "name": "animalSupplies",
+        "__v": 0
+    },
+    {
+        "_id": "5cf140292ec93d068a3572e1",
+        "description": "Accesorios para el hogar",
+        "name": "homeAccesories",
+        "__v": 0
+    },
+    {
+        "_id": "5cf03f637134910c5315fe08",
+        "description": "Alimentos",
+        "name": "food",
+        "__v": 0
+    },
+    {
+        "_id": "5cf13837f8b00f03a1cdc001",
+        "description": "Electrodomésticos",
+        "name": "homeAppliances",
+        "__v": 0
+    },
+    {
+        "_id": "5cf138c1f8b00f03a1cdc006",
+        "description": "Insumos médicos",
+        "name": "medicalSupplies",
+        "__v": 0
+    },
+    {
+        "_id": "5cf137cff8b00f03a1cdc000",
+        "description": "Juguetes",
+        "name": "toys",
+        "__v": 0
+    },
+    {
+        "_id": "5cf1387ef8b00f03a1cdc003",
+        "description": "Libros",
+        "name": "books",
+        "__v": 0
+    },
+    {
+        "_id": "5cf141a976f81906977b9fe9",
+        "description": "Materiales didácticos",
+        "name": "didacticMaterials",
+        "__v": 0
+    },
+    {
+        "_id": "5cf13863f8b00f03a1cdc002",
+        "description": "Muebles",
+        "name": "furnitures",
+        "__v": 0
+    },
+    {
+        "_id": "5cf1388ef8b00f03a1cdc004",
+        "description": "Ropa de adultos",
+        "name": "adultClothes",
+        "__v": 0
+    },
+    {
+        "_id": "5cf1389df8b00f03a1cdc005",
+        "description": "Ropa de niños",
+        "name": "childrenClothes",
+        "__v": 0
+    },
+    {
+        "_id": "5cf138e2f8b00f03a1cdc007",
+        "description": "Útiles escolares",
+        "name": "schoolSupplies",
+        "__v": 0
+    }
+]

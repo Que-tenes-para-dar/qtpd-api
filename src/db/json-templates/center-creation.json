@@ -1,0 +1,45 @@
+[
+    {
+        "apartmentNumber": "",
+        "centerType": "",
+        "city": "",
+        "department": "",
+        "description": "",
+        "donationTypes": [],
+        "doorNumber": "",
+        "email": "",
+        "loc": "",
+        "name": "",
+        "phone": "",
+        "street": "",
+        "zipCode": 11400,
+        "workingHours": ""
+    },
+    {
+        "apartmentNumber": "",
+        "centerType": "School",
+        "city": "Montevideo",
+        "department": "Montevideo",
+        "description": "Unidos es un centro educativo ubicado en el barrio Villa Española que atiende a niños de 6 a 12 años de bajo nivel socioeconómico y que tiene como objetivo atacar el círculo de pobreza que afecta a las familias de dicha zona. Funciona de forma paralela a la escuela primaria reglamentaria, buscando aumentar el rendimiento escolar y contemplando las necesidades de los niños. Se brinda apoyo escolar personalizado, un espacio lúdico y de expresión corporal, y se les enseñan los valores fundamentales para su desarrollo integral. \n\nEl centro es promovido y apoyado por la Asociación civil sin fines de lucro Unidos por los niños.\n\nPor más información visitar http://www.unidos.edu.uy/",
+        "donationTypes": [
+            "5cf140292ec93d068a3572e1",
+            "5cf03f637134910c5315fe08",
+            "5cf13837f8b00f03a1cdc001",
+            "5cf1387ef8b00f03a1cdc003",
+            "5cf141a976f81906977b9fe9",
+            "5cf13863f8b00f03a1cdc002",
+            "5cf1388ef8b00f03a1cdc004",
+            "5cf1389df8b00f03a1cdc005",
+            "5cf138e2f8b00f03a1cdc007"
+        ],
+        "doorNumber": "3247",
+        "email": "virginiab@unidos.edu.uy",
+        "latitude": "-34.860760000000",
+        "longitude": "-56.143814000000",
+        "name": "Centro Educativo Unidos Por Los Niños",
+        "phone": "099251030",
+        "street": "Vázquez Cores",
+        "zipCode": 11600,
+        "workingHours": "L. a V. de 8:30 a 12:30 y S. de 11:00 a 13:30"
+    }
+]
