@@ -38,7 +38,7 @@ In order to run the app. You need to provide the following variables for the pro
     ```
 
 ### Docker
-A Dockerfile is provided in order to create your own image. Note that you will need to provide the environment variables for those docker images.
+A Dockerfile is provided in order to create your own image. Note that you will need to provide the environment variables for the docker image.
 
 ## Authors
 Martin Manzo & Alvaro Farina

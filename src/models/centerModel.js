@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const validator = require('validator');
-const _ = require('lodash');
 const Schema = mongoose.Schema;
 
 const centerTypes = require('./enums/centerTypes');

@@ -1,6 +1,5 @@
 // external references
 const jwt = require('jsonwebtoken');
-const _ = require('lodash');
 
 const userService = require('../services/userService');
 
