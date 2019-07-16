@@ -1,5 +1,7 @@
 const express = require('express');
 
+// middlewares
+const authenticateMw = require('../middlewares/authenticate');
 // services
 const usersService = require('../services/userService');
 // models
@@ -7,7 +9,7 @@ const User = require('../models/userModel');
 
 const userRoutes = new express.Router();
 
-userRoutes.post('/', async (req, res) => {
+userRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], async (req, res) => {
     const body = req.body;
     try {
         const user = new User({

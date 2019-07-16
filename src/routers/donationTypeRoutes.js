@@ -51,7 +51,7 @@ donationTypeRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuper
 // =========================================================================
 // Delete a donation type by its id
 // =========================================================================
-donationTypeRoutes.delete('/:id', async (req, res) => {
+donationTypeRoutes.delete('/:id', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], async (req, res) => {
     try {
         const id = req.params.id;
         const deletedDonationType = await donationTypeService.deleteById(id);
