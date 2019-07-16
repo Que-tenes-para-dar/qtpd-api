@@ -27,6 +27,7 @@ userService.login = async (email, password) => {
 }
 
 userService.createNewUser = async (user) => {
+    user.password = bcrypt.hashSync(user.password, 12);
     const newUser = await User.createNewUser(user);
     // don't send the password back
     newUser.password = ':)';
