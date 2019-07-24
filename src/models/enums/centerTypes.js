@@ -10,7 +10,7 @@ centerTypes.enums = Object.freeze({
 
 centerTypes.descriptions = {
     spanish: {
-        'AnimalRefugee': 'Refugio animal',
+        'AnimalRefuge': 'Refugio animal',
         'Home': 'Hogar',
         'Organization': 'Organización',
         'ReligiousCenter': 'Centro religioso',

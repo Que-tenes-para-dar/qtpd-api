@@ -38,7 +38,6 @@ const centerSchema = new Schema({
     email: {
         type: String,
         trim: true,
-        unique: true,
         required: [true, 'El correo es requerido'],
         validate: {
             validator: validator.isEmail,
