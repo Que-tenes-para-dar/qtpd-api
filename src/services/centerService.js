@@ -37,6 +37,12 @@ centerService.searchByQuery = async query => {
             }
         },
         {
+            doorNumber: {
+                '$regex': query,
+                '$options': 'i'
+            }
+        },
+        {
             department: {
                 '$regex': query,
                 '$options': 'i'
@@ -50,6 +56,12 @@ centerService.searchByQuery = async query => {
         },
         {
             phone: {
+                '$regex': query,
+                '$options': 'i'
+            }
+        },
+        {
+            street: {
                 '$regex': query,
                 '$options': 'i'
             }
