@@ -88,7 +88,7 @@ centerSchema.path('donationTypes').validate(function (donationTypes) {
 
 centerSchema.statics.getAllCenters = async function () {
     return this.find({})
-        .populate('donationTypes', 'name')
+        .populate('donationTypes', 'name description')
         .exec();
 }
 
@@ -116,7 +116,7 @@ centerSchema.statics.getCentersFiltered = async function (centerFilter) {
         }
 
         return this.find(query)
-            .populate('donationTypes', 'name')
+            .populate('donationTypes', 'name description')
             .exec();
     } catch (error) {
         throw new Error(error.message);

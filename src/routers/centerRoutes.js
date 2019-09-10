@@ -1,4 +1,5 @@
 const express = require('express');
+const qs = require('qs');
 
 const centerService = require('../services/centerService');
 const authenticate = require('../middlewares/authenticate');
@@ -107,5 +108,14 @@ centerRouter.delete('/:id', [authenticate.verifyToken, authenticate.isSuperAdmin
     }
 });
 
+// =========================================================================
+// Search centers by the query received in the body
+// =========================================================================
+centerRouter.post('/searchByQuery', /*[authenticate.verifyToken, authenticate.isAdminOrSuperAdmin], */ (req, res, next) => {
+    return centerService.searchByQuery(req.body.query).then(centers => res.send({
+        success: true,
+        data: centers
+    })).catch(next);
+});
 
 module.exports = centerRouter;
