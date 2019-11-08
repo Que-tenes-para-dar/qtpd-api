@@ -22,17 +22,13 @@ userRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], 
             role: body.role,
             username: body.email
         });
-
-        const savedUser = await usersService.createNewUser(user);
-        res.status(200).send({
+        return usersService.createNewUser(user).then(savedUser => res.send({
             success: true,
             data: savedUser,
-        });
+        })).catch(next);
+
     } catch (error) {
-        res.status(400).send({
-            error: error.message,
-            message: 'There was an error trying to create a new user'
-        });
+        next(error);
     }
 });
 

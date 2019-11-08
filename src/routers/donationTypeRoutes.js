@@ -9,63 +9,41 @@ const DonationType = require('../models/donationTypeModel');
 // =========================================================================
 // Get all donation types
 // =========================================================================
-donationTypeRoutes.get('/', async (req, res, next) => {
-    try {
-        const donationTypes = await donationTypeService.getAllDonationTypes();
-        res.status(200).send({
-            success: true,
-            data: donationTypes,
-        });
-    } catch (error) {
-        res.status(500).send({
-            error,
-            message: 'Error trying to retrieve all donation types'
-        });
-    }
+donationTypeRoutes.get('/', (req, res, next) => {
+    return donationTypeService.getAllDonationTypes().then(donationTypes => res.send({
+        success: true,
+        data: donationTypes,
+    })).catch(next);
 });
 
 // =========================================================================
 // Create a new donation type
 // =========================================================================
-donationTypeRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], async (req, res) => {
-    const body = req.body;
+donationTypeRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], (req, res) => {
     try {
         const newDonationType = new DonationType({
-            description: body.description,
-            name: body.name,
+            description: req.body.description,
+            name: req.body.name,
         });
-        const savedDonationType = await donationTypeService.createNewDonationType(newDonationType);
-        res.status(201).send({
+        return donationTypeService.createNewDonationType(newDonationType).then(newDonationType => res.status(201).send({
             data: savedDonationType,
             message: 'DonationType created successfully',
             success: true
-        });
+        })).catch(next);
     } catch (error) {
-        res.status(500).send({
-            error,
-            message: "Error when creating the donationType"
-        });
+        next(error);
     }
 });
 
 // =========================================================================
 // Delete a donation type by its id
 // =========================================================================
-donationTypeRoutes.delete('/:id', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], async (req, res) => {
-    try {
-        const id = req.params.id;
-        const deletedDonationType = await donationTypeService.deleteById(id);
-        res.status(200).send({
-            data: deletedDonationType,
-            message: 'Donation type deleted succesfully',
-            success: true
-        });
-    } catch (error) {
-        res.status(500).send({
-            error,
-            message: `Error trying to delete the donation type with id ${id}`
-        });
-    }
-})
+donationTypeRoutes.delete('/:id', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], (req, res) => {
+    return donationTypeService.deleteById(req.params.id).then(deletedDonationType => res.status(200).send({
+        data: deletedDonationType,
+        message: 'Donation type deleted succesfully',
+        success: true
+    })).catch(next);
+});
 
 module.exports = donationTypeRoutes;

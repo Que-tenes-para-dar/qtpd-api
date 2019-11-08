@@ -10,26 +10,19 @@ const Center = require('../models/centerModel');
 // =========================================================================
 // Get all centers without filtering
 // =========================================================================
-centerRouter.get('/', async (req, res) => {
-    try {
-        const centers = await centerService.getAll();
-        const result = {
+centerRouter.get('/', (req, res) => {
+    centerService.getAll().then(centers => {
+        res.send({
             success: true,
             data: centers
-        };
-        res.status(200).send(result);
-    } catch (error) {
-        res.status(500).send({
-            message: 'Error trying to get the centers',
-            error
         });
-    }
+    }).catch(next);
 });
 
 // =========================================================================
 // Get all centers filtered
 // =========================================================================
-centerRouter.get('/filtered/:latitude/:longitude/:maxDistance/:donationTypes?', async (req, res, next) => {
+centerRouter.get('/filtered/:latitude/:longitude/:maxDistance/:donationTypes?', (req, res, next) => {
     try {
         const centerFilter = {
             donationTypes: req.params.donationTypes ? req.params.donationTypes.split(',') : [],
@@ -37,23 +30,19 @@ centerRouter.get('/filtered/:latitude/:longitude/:maxDistance/:donationTypes?', 
             longitude: parseFloat(req.params.longitude),
             maxDistance: parseInt(req.params.maxDistance),
         }
-        const centers = await centerService.getCentersFiltered(centerFilter);
-        res.status(200).send({
+        return centerService.getCentersFiltered(centerFilter).then(centers => res.send({
             success: true,
-            data: centers,
-        });
+            data: centers
+        })).catch(next);
     } catch (error) {
-        res.status(500).send({
-            message: 'Error trying to get the centers filtered',
-            error
-        });
+        next(error);
     }
 });
 
 // =========================================================================
 // Create a new center with the data received  in the body
 // =========================================================================
-centerRouter.post('/', [authenticate.verifyToken, authenticate.isSuperAdmin], async (req, res) => {
+centerRouter.post('/', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res) => {
     const body = req.body;
     try {
         const newCenter = new Center({
@@ -74,44 +63,37 @@ centerRouter.post('/', [authenticate.verifyToken, authenticate.isSuperAdmin], as
             workingHours: body.workingHours,
             zipCode: body.zipCode,
         });
-        const savedCenter = await centerService.createNewCenter(newCenter);
-        res.status(201).send({
+
+        return centerService.createNewCenter(newCenter).then(savedCenter => res.status(201).send({
             success: true,
             data: savedCenter,
             message: 'Center created with success',
-        });
+        })).catch(next);
     } catch (error) {
         console.warn('Center creation error: ', error);
-        res.status(500).send({
-            error: error.message,
-            message: "Error creating the center",
-        });
+        return next(error);
     }
 });
 
 // =========================================================================
 // Delete a center by its id
 // =========================================================================
-centerRouter.delete('/:id', [authenticate.verifyToken, authenticate.isSuperAdmin], async (req, res) => {
+centerRouter.delete('/:id', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res) => {
     try {
-        const deletedCenter = await centerService.deleteById(req.params.id);
-        res.status(200).send({
+        return centerService.deleteById(req.params.id).then(deletedCenter => res.send({
             success: true,
             message: 'Center deleted succesfully',
             data: deletedCenter
-        });
+        })).catch(next);
     } catch (error) {
-        res.status(500).send({
-            error,
-            message: 'Error trying to delete the center'
-        });
+        next(error);
     }
 });
 
 // =========================================================================
 // Search centers by the query received in the body
 // =========================================================================
-centerRouter.post('/searchByQuery', /*[authenticate.verifyToken, authenticate.isAdminOrSuperAdmin], */ (req, res, next) => {
+centerRouter.post('/searchByQuery', (req, res, next) => {
     return centerService.searchByQuery(req.body.query).then(centers => res.send({
         success: true,
         data: centers
