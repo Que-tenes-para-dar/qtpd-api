@@ -10,14 +10,14 @@ const emailRoutes = new express.Router();
 // =========================================================================
 // Sends an email
 // =========================================================================
-emailRoutes.post('/', (req, res) => {
+emailRoutes.post('/', (req, res, next) => {
     const body = req.body;
     const newEmail = new Email({
         sendersEmail: body.sendersEmail,
         sendersName: body.sendersName,
         emailText: body.emailText
     });
-    return emailService.sendNewEmail(newEmail).then(sendEmailResult => res.send(sendEmailResult)).catch(next);
+    return emailService.sendNewEmail(newEmail).then(sendEmailResult => res.status(200).send(sendEmailResult)).catch(next);
 });
 
 module.exports = emailRoutes;
