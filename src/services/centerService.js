@@ -13,8 +13,6 @@ centerService.deleteById = async (centerId) => {
 }
 
 centerService.getAll = async () => {
-    console.log('get all');
-    throw new Error('Error');
     return Center.getAllCenters();
 }
 
