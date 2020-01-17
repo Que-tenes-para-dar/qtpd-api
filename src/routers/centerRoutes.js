@@ -10,7 +10,7 @@ const Center = require('../models/centerModel');
 // =========================================================================
 // Get all centers without filtering
 // =========================================================================
-centerRouter.get('/', (req, res) => {
+centerRouter.get('/', (req, res, next) => {
     centerService.getAll().then(centers => {
         res.send({
             success: true,
@@ -42,7 +42,7 @@ centerRouter.get('/filtered/:latitude/:longitude/:maxDistance/:donationTypes?', 
 // =========================================================================
 // Create a new center with the data received  in the body
 // =========================================================================
-centerRouter.post('/', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res) => {
+centerRouter.post('/', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res, next) => {
     const body = req.body;
     try {
         const newCenter = new Center({
@@ -78,7 +78,7 @@ centerRouter.post('/', [authenticate.verifyToken, authenticate.isSuperAdmin], (r
 // =========================================================================
 // Delete a center by its id
 // =========================================================================
-centerRouter.delete('/:id', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res) => {
+centerRouter.delete('/:id', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res, next) => {
     try {
         return centerService.deleteById(req.params.id).then(deletedCenter => res.send({
             success: true,

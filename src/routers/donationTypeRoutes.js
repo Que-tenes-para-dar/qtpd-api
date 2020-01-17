@@ -19,13 +19,13 @@ donationTypeRoutes.get('/', (req, res, next) => {
 // =========================================================================
 // Create a new donation type
 // =========================================================================
-donationTypeRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], (req, res) => {
+donationTypeRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], (req, res, next) => {
     try {
         const newDonationType = new DonationType({
             description: req.body.description,
             name: req.body.name,
         });
-        return donationTypeService.createNewDonationType(newDonationType).then(newDonationType => res.status(201).send({
+        return donationTypeService.createNewDonationType(newDonationType).then(savedDonationType => res.status(201).send({
             data: savedDonationType,
             message: 'DonationType created successfully',
             success: true
@@ -38,7 +38,7 @@ donationTypeRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuper
 // =========================================================================
 // Delete a donation type by its id
 // =========================================================================
-donationTypeRoutes.delete('/:id', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], (req, res) => {
+donationTypeRoutes.delete('/:id', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], (req, res, next) => {
     return donationTypeService.deleteById(req.params.id).then(deletedDonationType => res.status(200).send({
         data: deletedDonationType,
         message: 'Donation type deleted succesfully',
