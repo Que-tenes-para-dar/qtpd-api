@@ -14,15 +14,6 @@ authenticate.isAdmin = (req, res, next) => {
     });
 }
 
-authenticate.isAdminOrSuperAdmin = (req, res, next) => {
-    if (userService.isAdminOrSuperAdmin(req.user)) {
-        return next();
-    }
-    return res.status(401).send({
-        message: 'Unauthorized.'
-    });
-}
-
 authenticate.isSuperAdmin = (req, res, next) => {
     if (userService.isSuperAdmin(req.user)) {
         return next();

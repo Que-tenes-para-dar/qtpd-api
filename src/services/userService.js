@@ -59,10 +59,6 @@ userService.getUserById = async (userId) => {
 };
 
 userService.isAdmin = (user) => {
-    return user.role === roles.enums.Admin;
-}
-
-userService.isAdminOrSuperAdmin = (user) => {
     return user.role === roles.enums.Admin || user.role === roles.enums.SuperAdmin;
 }
 
