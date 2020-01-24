@@ -16,6 +16,10 @@ centerService.getAll = async () => {
     return Center.getAllCenters();
 }
 
+centerService.getCenterEmails = async () => {
+    return Center.getCenterEmails();
+}
+
 centerService.getCentersFiltered = async (centerFilter) => {
     return Center.getCentersFiltered(centerFilter);
 }

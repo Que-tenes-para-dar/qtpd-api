@@ -39,6 +39,15 @@ centerRouter.get('/filtered/:latitude/:longitude/:maxDistance/:donationTypes?', 
     }
 });
 
+centerRouter.get('/emails', [authenticate.verifyToken, authenticate.isAdminOrSuperAdmin],  (req, res, next) => {
+    return centerService.getCenterEmails().then(centers => {
+        const csvCenters = centers.map(c => c.email).join(',');
+        return res.send({
+            csvCenters
+        })
+    }).catch(next);
+});
+
 // =========================================================================
 // Create a new center with the data received  in the body
 // =========================================================================

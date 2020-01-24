@@ -9,7 +9,7 @@ const User = require('../models/userModel');
 
 const userRoutes = new express.Router();
 
-userRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], async (req, res) => {
+userRoutes.post('/', [authenticateMw.verifyToken, authenticateMw.isSuperAdmin], async (req, res, next) => {
     const body = req.body;
     try {
         const user = new User({

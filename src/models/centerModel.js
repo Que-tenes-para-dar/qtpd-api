@@ -96,6 +96,10 @@ centerSchema.statics.createNewCenter = async function (center) {
     return center.save();
 }
 
+centerSchema.statics.getCenterEmails = async function () {
+    return this.find({}).select('email');
+}
+
 centerSchema.statics.getCentersFiltered = async function (centerFilter) {
     try {
         const query = {
