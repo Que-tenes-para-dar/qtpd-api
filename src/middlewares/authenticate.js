@@ -26,7 +26,7 @@ authenticate.isSuperAdmin = (req, res, next) => {
 authenticate.verifyToken = (req, res, next) => {
     try {
         const token = req.header('x-auth');
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.QTPD_API_JWT_SECRET);
         req.user = decoded.user;
         next();
     } catch (error) {
