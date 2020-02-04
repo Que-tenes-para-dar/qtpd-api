@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // environment variables
-const JWT_SECRET = process.env.JWT_SECRET || '';
+const JWT_SECRET = process.env.QTPD_API_JWT_SECRET || '';
 
 const userService = {};
 

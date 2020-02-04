@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 require('./db/mongoose');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.QTPD_API_PORT || 3000;
 
 // CORS
 app.use(function (req, res, next) {

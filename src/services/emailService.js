@@ -4,10 +4,10 @@ const Email = require('../models/emailModel');
 
 const emailService = {};
 
-const emailUser = process.env.EMAIL_USER || '';
-const gmailClientId = process.env.GMAIL_CLIENT_ID || '';
-const gmailClientSecret = process.env.GMAIL_CLIENT_SECRET || '';
-const gmailRefreshToken = process.env.GMAIL_REFRESH_TOKEN || '';
+const emailUser = process.env.QTPD_API_EMAIL_USER || '';
+const gmailClientId = process.env.QTPD_API_GMAIL_CLIENT_ID || '';
+const gmailClientSecret = process.env.QTPD_API_GMAIL_CLIENT_SECRET || '';
+const gmailRefreshToken = process.env.QTPD_API_GMAIL_REFRESH_TOKEN || '';
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',

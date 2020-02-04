@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGODB_URL =  process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/qtpd-api';
+const MONGODB_URL =  process.env.QTPD_API_MONGODB_URL || 'mongodb://127.0.0.1:27017/qtpd-api';
 
 mongoose.connect(MONGODB_URL, {
     useNewUrlParser: true,
