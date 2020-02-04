@@ -15,7 +15,7 @@ In order to run the app. You need to provide the following variables for the pro
 - API:
     - QTPD_API_PORT - the port where the api will run
     - QTPD_API_MONGODB_URL - the url where the mongo database lives and its name. (e.g.: =mongodb://127.0.0.1:27017/qtpd-db)
-    - QTPD_API_JWT_SECRET - Json web token secret key
+    - QTPD_API_JWT_SECRET - Json web token secret key (https://gist.github.com/ygotthilf/baa58da5c3dd1f69fae9)
     - The following data is needed to send emails from a gmail account:
         - QTPD_API_EMAIL_USER
         - QTPD_API_GMAIL_CLIENT_ID
