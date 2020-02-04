@@ -13,14 +13,14 @@ This is a  RESTful API to show where the users can bring their donations based o
 ### Environment configurations
 In order to run the app. You need to provide the following variables for the project:
 - API:
-    - PORT - the port where the api will run
-    - MONGODB_URL - the url where the mongo database lives and its name. (e.g.: =mongodb://127.0.0.1:27017/qtpd-db)
-    - JWT_SECRET - Json web token secret key
+    - QTPD_API_PORT - the port where the api will run
+    - QTPD_API_MONGODB_URL - the url where the mongo database lives and its name. (e.g.: =mongodb://127.0.0.1:27017/qtpd-db)
+    - QTPD_API_JWT_SECRET - Json web token secret key
     - The following data is needed to send emails from a gmail account:
-        - EMAIL_USER
-        - GMAIL_CLIENT_ID
-        - GMAIL_CLIENT_SECRET
-        - GMAIL_REFRESH_TOKEN
+        - QTPD_API_EMAIL_USER
+        - QTPD_API_GMAIL_CLIENT_ID
+        - QTPD_API_GMAIL_CLIENT_SECRET
+        - QTPD_API_GMAIL_REFRESH_TOKEN
     Note: For development purposes, I would recommend to provide those variables in a file 'dev.env' under a 'config' folder in the root folder of the api project
 
 ### Usage
