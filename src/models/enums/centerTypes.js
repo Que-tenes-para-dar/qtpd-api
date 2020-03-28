@@ -6,6 +6,7 @@ centerTypes.enums = Object.freeze({
     Organization: 'Organization',
     ReligiousCenter: 'ReligiousCenter',
     School: 'School',
+    Olla: 'Olla'
 });
 
 centerTypes.descriptions = {
@@ -15,6 +16,7 @@ centerTypes.descriptions = {
         'Organization': 'Organización',
         'ReligiousCenter': 'Centro religioso',
         'School': 'Centro educativo',
+        'Olla': 'Olla popular'
     }
 };
 
