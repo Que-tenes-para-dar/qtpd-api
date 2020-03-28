@@ -109,4 +109,14 @@ centerRouter.post('/searchByQuery', (req, res, next) => {
     })).catch(next);
 });
 
+// =========================================================================
+// Search centers by the type received in the queryString
+// =========================================================================
+centerRouter.get('/byType/', (req, res, next) => {
+    return centerService.searchByCenterType(req.query.centerType).then(centers => res.send({
+        success: true,
+        data: centers
+    })).catch(next);
+});
+
 module.exports = centerRouter;

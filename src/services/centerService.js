@@ -1,4 +1,5 @@
 const Center = require('../models/centerModel');
+const centerTypes = require('../models/enums/centerTypes');
 
 const centerService = {};
 
@@ -74,6 +75,15 @@ centerService.searchByQuery = async query => {
     return Center.find({
         $or: dbQuery
     }).populate('donationTypes', 'name description').exec();
+}
+
+centerService.searchByCenterType = async centerType => {
+    if (centerType && centerTypes.enums[centerType]) {
+        return Center.find({
+            'centerType': centerType
+        }).populate('donationTypes', 'name description').exec();
+    }
+    return [];
 }
 
 module.exports = centerService;
