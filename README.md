@@ -5,7 +5,7 @@ This is a  RESTful API to show where the users can bring their donations based o
 
 ### Installation
 
-- To install the API run:
+- Install all packages with:
     ```
     npm install
     ```
@@ -41,4 +41,4 @@ In order to run the app. You need to provide the following variables for the pro
 A Dockerfile is provided in order to create your own image. Note that you will need to provide the environment variables for the docker image.
 
 ## Authors
-Martin Manzo & Alvaro Farina
+Martin Manzo & Alvaro Fariña
