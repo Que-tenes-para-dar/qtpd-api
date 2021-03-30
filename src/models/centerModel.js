@@ -6,6 +6,10 @@ const Schema = mongoose.Schema;
 const centerTypes = require('./enums/centerTypes');
 
 const centerSchema = new Schema({
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
     apartmentNumber: {
         type: String,
         required: false
