@@ -86,4 +86,11 @@ centerService.searchByCenterType = async centerType => {
     return [];
 }
 
+centerService.setIsActive = async ({ centerId, isActive }) => {
+    return Center.updateOne(
+        { _id: centerId },
+        { isActive }
+    );
+}
+
 module.exports = centerService;

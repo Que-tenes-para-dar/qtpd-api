@@ -119,4 +119,18 @@ centerRouter.get('/byType/', (req, res, next) => {
     })).catch(next);
 });
 
+
+// =========================================================================
+// Sets active true or false for the center with _id=centerId
+// =========================================================================
+centerRouter.post('/setIsActive', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res, next) => {
+    const { isActive, centerId } = req.body;
+    return centerService.setIsActive({
+        centerId,
+        isActive: isActive.toLowerCase() === 'true'
+    }).then(() => res.send({
+        success: true,
+    })).catch(next);
+});
+
 module.exports = centerRouter;
