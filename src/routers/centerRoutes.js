@@ -119,7 +119,6 @@ centerRouter.get('/byType/', (req, res, next) => {
     })).catch(next);
 });
 
-
 // =========================================================================
 // Sets active true or false for the center with _id=centerId
 // =========================================================================
@@ -129,6 +128,15 @@ centerRouter.post('/setIsActive', [authenticate.verifyToken, authenticate.isSupe
         centerId,
         isActive: isActive.toLowerCase() === 'true'
     }).then(() => res.send({
+        success: true,
+    })).catch(next);
+});
+
+// =========================================================================
+// Sets all centers as active
+// =========================================================================
+centerRouter.post('/setAllActive', [authenticate.verifyToken, authenticate.isSuperAdmin], (req, res, next) => {
+    return centerService.setAllActive().then(() => res.send({
         success: true,
     })).catch(next);
 });
