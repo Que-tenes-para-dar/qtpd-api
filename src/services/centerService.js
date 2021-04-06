@@ -30,47 +30,47 @@ centerService.searchByQuery = async query => {
         return centerService.getAll();
     }
     const dbQuery = [{
-            email: {
-                '$regex': query,
-                '$options': 'i'
-            }
-        },
-        {
-            city: {
-                '$regex': query,
-                '$options': 'i'
-            }
-        },
-        {
-            doorNumber: {
-                '$regex': query,
-                '$options': 'i'
-            }
-        },
-        {
-            department: {
-                '$regex': query,
-                '$options': 'i'
-            }
-        },
-        {
-            name: {
-                '$regex': query,
-                '$options': 'i'
-            }
-        },
-        {
-            phone: {
-                '$regex': query,
-                '$options': 'i'
-            }
-        },
-        {
-            street: {
-                '$regex': query,
-                '$options': 'i'
-            }
+        email: {
+            '$regex': query,
+            '$options': 'i'
         }
+    },
+    {
+        city: {
+            '$regex': query,
+            '$options': 'i'
+        }
+    },
+    {
+        doorNumber: {
+            '$regex': query,
+            '$options': 'i'
+        }
+    },
+    {
+        department: {
+            '$regex': query,
+            '$options': 'i'
+        }
+    },
+    {
+        name: {
+            '$regex': query,
+            '$options': 'i'
+        }
+    },
+    {
+        phone: {
+            '$regex': query,
+            '$options': 'i'
+        }
+    },
+    {
+        street: {
+            '$regex': query,
+            '$options': 'i'
+        }
+    }
     ];
     return Center.find({
         $or: dbQuery
