@@ -93,4 +93,10 @@ centerService.setIsActive = async ({ centerId, isActive }) => {
     );
 }
 
+centerService.setAllActive = async () => {
+    return Center.updateMany(
+        { isActive: true }
+    );
+}
+
 module.exports = centerService;
