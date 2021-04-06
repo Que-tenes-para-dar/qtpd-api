@@ -90,8 +90,12 @@ centerSchema.path('donationTypes').validate(function (donationTypes) {
     return donationTypes.length > 0;
 }, 'El centro debe recibir al menos un tipo de donacion.');
 
-centerSchema.statics.getAllCenters = async function () {
-    return this.find({})
+centerSchema.statics.getAllCenters = async function (includeInactive) {
+    let query = {}
+    if (!includeInactive) {
+        query = { isActive: true }
+    }
+    return this.find(query)
         .populate('donationTypes', 'name description')
         .exec();
 }

@@ -8,10 +8,11 @@ const centerRouter = new express.Router();
 const Center = require('../models/centerModel');
 
 // =========================================================================
-// Get all centers without filtering
+// Get all active centers - add `?includeInactive=true` to also include inactive ones
 // =========================================================================
 centerRouter.get('/', (req, res, next) => {
-    centerService.getAll().then(centers => {
+    const includeInactive = !!req.query.includeInactive && req.query.includeInactive.toLowerCase() === 'true';
+    centerService.getAll(includeInactive).then(centers => {
         res.send({
             success: true,
             data: centers

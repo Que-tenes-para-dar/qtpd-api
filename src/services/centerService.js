@@ -13,8 +13,8 @@ centerService.deleteById = async (centerId) => {
     });
 }
 
-centerService.getAll = async () => {
-    return Center.getAllCenters();
+centerService.getAll = async (includeInactive) => {
+    return Center.getAllCenters(includeInactive);
 }
 
 centerService.getCenterEmails = async () => {
