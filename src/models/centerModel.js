@@ -119,8 +119,13 @@ centerSchema.statics.getCentersFiltered = async function (centerFilter) {
                     },
                     $maxDistance: (centerFilter.maxDistance * 1000) // parse the distance from meters to kms
                 }
-            }
+            },
         };
+
+        if (!centerFilter.includeInactive) {
+            query.isActive = true;
+        }
+
         if (centerFilter.donationTypes.length) {
             query.donationTypes = {
                 $in: centerFilter.donationTypes

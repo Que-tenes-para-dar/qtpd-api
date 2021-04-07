@@ -7,11 +7,16 @@ const authenticate = require('../middlewares/authenticate');
 const centerRouter = new express.Router();
 const Center = require('../models/centerModel');
 
+const getIncludeInactive = (req) => !!(
+    req.query.includeInactive
+    && req.query.includeInactive.toLowerCase() === 'true'
+)
+
 // =========================================================================
 // Get all active centers - add `?includeInactive=true` to also include inactive ones
 // =========================================================================
 centerRouter.get('/', (req, res, next) => {
-    const includeInactive = !!req.query.includeInactive && req.query.includeInactive.toLowerCase() === 'true';
+    const includeInactive = getIncludeInactive(req);
     centerService.getAll(includeInactive).then(centers => {
         res.send({
             success: true,
@@ -21,15 +26,17 @@ centerRouter.get('/', (req, res, next) => {
 });
 
 // =========================================================================
-// Get all centers filtered
+// Get all centers filtered - add `?includeInactive=true` to also include inactive ones
 // =========================================================================
 centerRouter.get('/filtered/:latitude/:longitude/:maxDistance/:donationTypes?', (req, res, next) => {
     try {
+        const includeInactive = getIncludeInactive(req);
         const centerFilter = {
             donationTypes: req.params.donationTypes ? req.params.donationTypes.split(',') : [],
             latitude: parseFloat(req.params.latitude),
             longitude: parseFloat(req.params.longitude),
             maxDistance: parseInt(req.params.maxDistance),
+            includeInactive,
         }
         return centerService.getCentersFiltered(centerFilter).then(centers => res.send({
             success: true,
