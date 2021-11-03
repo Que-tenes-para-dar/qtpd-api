@@ -19,7 +19,7 @@
     "mongoose-unique-validator": "^2.0.3",
     "nodemailer": "^6.2.1",
     "qs": "^6.8.0",
-    "validator": "^11.0.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "env-cmd": "^8.0.2",
